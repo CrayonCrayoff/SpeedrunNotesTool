@@ -1,0 +1,398 @@
+This is the starting screen of the SpeedrunNotesTool. It can show notes and maps. 
+
+Essentially, it keeps track of two lists: one for notes and one for maps. 
+
+For maps, it checks the folder called "maps". It takes all the files in this folder (please make sure there are only images in there), and then puts them in alphabetical order. So to get the maps to show up in the right order, the file names need to be in alphabetical order.
+
+For the text notes, it will check the text file called TheNotes.txt and read all the lines from it. It determines where the end of a split is by looking for lines that start with the exact phrase "##End of Split##" (it's also case-sensitive). You can edit the text file to add in your own notes. 
+
+The hotkeys it responds to are hard-coded in. There is currently no way to edit these, but I'm hoping to add that functionality sometime soon. The hotkeys for this build are as follows:
+
+Next Split	= F1
+Undo Split	= F3
+Skip Split	= F4
+Next Map	= F5
+Previous Map	= F6
+Reset 		= F2
+Swap Modes	= F8
+Close Program 	= Escape (To prevent accidental closing, this only works if the program is in focus.)
+
+All of these hotkeys (with the exception of closing the program) will work even if the program is running in the background. It doesn't need to be in focus. 
+
+You can quit the program by pressing the close button at the top right. 
+
+Finally, the tool can be resized to whatever size you like. It will adjust horizontal text wrapping (for notes) and image size (for maps) to fit the screen. Unfortunately, it won't save these dimensions (also something I will add eventually), so it will always start up with the same dimensions. 
+
+This page is part of TheNotes.txt as well. Please keep this part in when editing. To properly line up with the way LiveSplit functions, it's important to have one screen of text before the start of the actual notes. You might notice there's also one "split" at the end that just says "Good job!". That is there for the same reason.
+##End of Split##
+Blastman:
+
+*Keep track of how many chips you get!*
+ 
+Talk to dad, then mom, then everyone in town. 
+   (*)First folder edit:
+Select Cannon B, swap with CrkShot. Reg other CrkShot.
+Exit out of the folder and hold down to go read e-mail. 
+
+Go home, jack into your PC. Go to Central 2, talk to everyone there except the shopkeeper.
+Skip cutscene, J/O. Go to sleep. Next day, go to school. Talk to Mr Mach in Staff Room. 
+Go to 6-1 after. Talk to everyone in class, pick up RegUp1 on the right most part of class. (Reg 5)
+   OldStove Fight: 
+(#)Pray for swords. Lure them to the front. Counter one, kill the other.
+
+Go down+right after the fight, pick up BMD (700 Zenny). 
+J/O, skip scenes, talk to everyone as MegaMan.  
+Copybot, leave class, talk to Bucket Kid. Go back in. Skip scene.
+(**)DO NOT FORGET: TALK TO MR MACH BEFORE LEAVING(**)
+
+Head to Staff Room, skip cutscenes, do RobCtrlComp. 
+In RobCtrlComp 2, get the one on the very back first, then the one in the bottom left part.
+
+(*)Folder Edit just before BlastMan: 
+   For every extra Reflect/Machgun, remove one chip.
+(Remove pref: Recov L > Recov A > AreaGrab > Sword > WideSword)
+   Add every chip, then reg Reflect1. 
+
+Blastman will always attack after his fourth movement.
+After killing him, skip cutscene and split. 
+##End of Split##
+SeasideBBS:
+
+*You really only need to keep track of TrnArrows here. 3 is the max!*
+Run home and jack in. Buy 3 sneakruns at the sub-chip dealer. Activate one immediately. 
+(**)DO NOT FORGET: PICK UP KEYDATA IN CENTRALAREA2.(**)	
+
+Talk to the Beast statues, then sleep.
+
+From 6-1, run to the Staff Room and talk to the Biology Teacher.
+Next to room 6-2. Talk to the kid above the entrance door, then jack into the blackboard. Pick up BMD (top right).
+
+Leave school, talk to the Old Man next to the Lev Bus. 
+   FishBox Fight:
+      Reflect1 is your friend: it counters the fish. 
+
+Run back to Mick in Room 6-1.
+Go home, J/I, activate a sneakrun after the mail in Central 1.
+   (**)DO NOT FORGET: TALK TO PANICKING DUDE.(**)
+Pick up RegUp BMD in Central 2 on the way to Central 3. (Reg 6)
+Talk to the Girl Navi at the entrance to Seaside Area in Central Area 3, then run back to the Navi in Central 1.
+
+J/O then go to the Bathroom. TalkToMom, then J/I, skip cutscene.
+   (#)Pray for a damage chip you can take along with Reflect1. 
+   (#)Counter the first Mettaur, then Reflect1 with double damage on the bottom row.
+
+Now get back on the net and talk to the Navi at the entrance to Seaside Area. Make sure to use a SneakRun in Central 1! Also pick up the CopyDmg in Central 2.
+
+   Pray for a TrnArrow1 A drop. TrnArrow K is fine.
+
+After talking to the BBS, skip cutscene and split.
+##End of Split##
+Diveman:
+	
+Back to school, talk to Mick in the School Lobby. Then go to the Lev Station.
+In Seaside Town:
+   If you don't have TrnArrow1, force encounters in the FishstickComp.
+   Otherwise, run straight to the Aquarium Entrance to trigger a cutscene. After, just go home and sleep.
+When you wake up you'll get an email. 
+
+   (*)Folder edit:
+      Remove another Cannon1 (preference B > A), then another chip.
+      Remove preference: Recov10 L > AreaGrab > Sword S > WideSword S.
+      Add in TrnArrow1 and the cannon you removed. Reg CrkShot * again.
+
+Read e-mail, do NaviCust tutorial. 
+
+Off to Seaside again!
+Talk to Mick in front of the Aquarium. Inside, talk to every animal's recording, except jellyfish.
+Once you're done, go to the stage viewing area (Doorway in the top corner of the second map).
+   Pick up the RegUp from the trash. 
+Head to the Lev Station for some cutscenes (Don't leave Seaside!).
+Run to the second part of the Aquarium again.
+Head behind the desk in the Aquarium Lobby to the stage area and talk to Fanny (The Elephant Seal).
+Then run straight down to the sun icon on the floor for another cutscene.
+Run to the bottom of the stairs in the Lobby. Skip two cutscenes.
+You need to talk to the CopyBot to the left of the fountain in the Seaside Town Plaza.
+   Skip cutscene and talk to it again.
+Go back to where Fanny was with Megaman and run down the stairs into the water. 
+   You need the ball at the other end of the pool.
+After this cutscene, talk to Fanny again.
+Run through the door and follow the path into a cutscene.
+
+   Diveman fight:
+      (#)He always moves twice, then pops up. Doesn't always attack.
+      (#)One rocket always spawns in your lane, if it can.
+      (#)MiniBombs hit him even underwater.
+
+Split after skipping the first cutscene after this fight.
+After the fight, run to the second main part of the aquarium for some cutscenes. Then home and sleep.
+##End of Split##
+HeatCross:
+Go sleep at home, then go to the Staff Room to talk to Mach. Back to 6-1 and straight ahead for Iris cutscene.
+Now go through the Red door in the Staff Room and talk to Mr. Match. Skip scene, then talk to the comp.
+In Central 1, talk to the cube. Open menu, go to folder, then immediately exit.
+Grab 4 more sneakruns from the sub-chip dealer. Activate one right away.
+   
+KettleFight 1:
+      (#)Take CrkShot, then HeatPress.
+   KettleFight 2:
+      (#)Take Heatpress, then CrkShot.
+Go to end of Central 3 for KettleFight 3. Save beforehand.
+   KettleFight 3:
+      (#)Take HeatPress. It's all you need.
+Go to the bottom left end of Central 3 for KettleFight 4. 
+   (*)Folder edit beforehand. 
+      Remove preference: Recov10 A > AreaGrab > Sword S > WideSword S.
+      Add in CopyDmg and reg it. 
+   KettleFight 4:
+      (#)Take CopyDmg and HeatPress. 
+ 
+Jack out and talk to Mr Match.
+   Heatman fight:
+      (#)Moves randomly, but always attacks from middle back row. 
+      (#)Hold on to Full Synchro and pray for TrnArrow1. 
+ 
+After the fight, skip the cutscene and clear the HeatCross tutorial. 
+   HeatCross tutorial:
+      (#)Take 2 FireHits and the Vulcan (for safety mostly).
+Split after finishing the tutorial, then head home and sleep.
+##End of Split##
+Circusman:
+TalkToMom, then run outside and talk to Iris. She's in the "park" where you saved her from the Robot Dog.
+After too many cutscenes, stop by Tab's Chip Shop. That's the building left of the park.
+ 
+   Lotto Codes!
+   08789369 (ElemTrap), 88674125 (M-Boomer), 08749780 (HP+400)
+   19790420 (BustPack), 71757977 (AirSpin), 12110031 (HackJack)		
+
+Off to the net. Do a folder edit in Central 1.		
+ 
+   (*)Folder edit:
+      Sort (select, 4th option). Remove 4 swords, reg crkshot. 
+      Then put in your 4 new chips. 
+      (*)NaviCust: Select, then add Buster Pack, Atk+1 and HP+400.
+
+Sneakrun up, you'll be running to Central 3. Go to the overhanging path leading to the Underground on the left side of Central 3. TalkToDad and get back on the net. Soulweapon time! 
+After clearing out Central Area, it's time to play as Heatman so we can fix MegaMan again. Pop a sneakrun, go to Seaside. After Seaside2 is cleared out, you've got a gate with 3 battles.
+
+   1. CrkShot, HeatPress.
+      (#)Counter Hit the Mettaur, then down and Counter the Gunner.
+   2. HeatPress, CrkShot.
+      (#)Counter Hit the Gunner, then move up and Counter Hit the Puffy.
+   3. CrkShot, HeatPress. 
+      (#)Counter the first Mettaur, then HeatPress in the middle.
+
+Talk to the water thing at the end of the area for another fight. Pray for M-Boomer.
+If you got M-Boomer, move up and counter the Mett with CrkShot. Fire the Boomer when the Quaker lands.
+Jack out and back in. Talk to MegaMan in Lan's HP. Beast Out tutorial: Vulcan and Widesword. Up, right, A, A.
+Skip cutscenes, jack in at home, sneakrun up and run to the beast statues in Central 3.
+
+   Circusman fight:
+   (#)If you don't get M-Boomer, just HeatCross.
+   (#)Flamethrower until victory.
+##End of Split##
+Judgeman:
+Run home and get on the net. Buy 2 sneakruns at the sub-chip dealer, talk to the yellow girl navi. J/O. 
+Take the Lev Bus to Seaside, second part of Aquarium. Jack into the monitor, talk to girl navi. 
+In Fish Stick comp, talk to girl navi as well. Pick up Unlocker if you haven't already.
+Lev Bus back to Central and head up to Class 6-1. Talk to the tank across from the kid on the back wall, then talk to the security camera in the right corner and jack in.
+Jack out, skip cutscene, leave the room and go right for a quiz. Answer in this order: 2, 3, 3, 1, 2.
+Next, go to the courthouse in Green Town. J/I "TRUTH".
+   (**)TAKE THE PMD IN THE TOP SEGMENT(**), then talk to the blue dude. 
+ 
+   (*)Folder edit (EXPOFLDR FIRST):
+      Take out Cannon A and *, all 3 Vulcan2 D, all 2 DublShot *. Replace with whatever. Exit out of ExpoFldr.
+      (*)Folder edit (FOLDER1):
+         Remove 8 chips (pref: MachGun, AreaGrab, L codes, B codes)
+         Reg copyDmg. Sort backpack by ID twice.
+         Add in DublShots, BlkBomb F, then the Vulcans and Cannons. 
+ 
+Take the second warp, second warp again, the right stairs. Second branch, second branch again. Talk to the gate.
+Jack out, back in, then talk to blue dude again (MASH A, YOU WANT TO ACCEPT), then the green one next to him.
+Run back to the gate and enter Green Area 2.
+Take the first right, then go up and follow the path. Cross sliders, talk to the navi behind the desk upstairs.
+Enter the Court Room and talk to all the NPCs. Go home and sleep.
+ 
+Run home, talk to mom, then take the Lev Bus to Green Town. After scenes, talk to Ito in the back of the Court Room.
+Head back to central town and (**)TALK TO MACH IN THE SCHOOL LOBBY(**).
+Jack into the Camera in 6-1 and talk to the console. After the fight, jack out. (**)TALK TO THE LOCKERS TO THE LEFT(**)
+Next up, go and talk to the console in the Staff Room, where you fought BlastMan.
+Take the bus back to GreenTown and talk to the guy outside the Court Room. Skip scene, move on to middle of court room.
+The next door is locked so go talk to the blue navi in the "TRUTH" comp again and come back. (**)THE CODE IS 153(**)
+ 
+Just follow the JudgeComp maps here. (**)DO NOT FORGET: PICK UP THE BMD AT THE END OF JUDGECOMP3(**)
+   Judgeman fight:
+   (#)Just buster him down. Boomer is the only chip you'd want to take at all.
+
+Split after skipping the first cutscene after this fight.
+##End of Split##
+Sky Gauntlets:
+After some cutscenes, GO TO SEASIDE FIRST and take the quiz next to the AquariumComp.
+   Quiz order: 2, 3, 1, 1, 2, 3, 2, 2, 3, 2
+
+   (*)NaviCust edit. Add Sliprunner.
+
+Go to Sky Town, talk to the man in the brown suit, then go up. Go straight, jack into shower head comp to buy 1 RushFood.
+Enter the building and talk to the Navi. After the cutscene take the door on the right wall, go talk to Mr Weather.
+Now go outside, straight right+down and follow the path. Jack into the antenna.
+   (**)DO NOT FORGET: TALK TO THE PROG ON YOUR RIGHT TO MAKE A LINK(**)
+
+When on the net, go up and right to the first Official Navi. Talk to Official Navi at the back end of this platform.
+
+After the battle Slip Right, then down+right, then down+left, then hold right and follow the path you end up on.
+You should see another official navi, talk to it for a 5 round battle.
+Afterwards, slip directly into him, then slip up+left.
+In Sky 2, slip forward and follow the main path. You'll see some movement panels and a red ghost panel with a bone on it.
+Talk to the red panel, cross and talk to the official for another 5 round battle.
+Up+left lands you next to a movement panel, cross it then slip down+left.
+Take the stairs and go straight, there's another official at the end with a 10 round battle.
+   (If you die you just have to start the battles again by the way, it's not a game over.)
+
+Go back to the line of movement panels and cross, you should see a blue navi to the right. Talk to it.
+
+   (**)DO NOT JACK OUT AFTER THE CUTSCENE. SPLIT AND GO TO UNDERNET1!(**)
+##End of Split##
+Elementman:	
+Cross the first movement panel and slip forward, then down+left. That'll put you on the path you need to be following.
+Take the left turn and grab the BMD on the right segment of the comp. 
+   Open the Navi Cust and add HP+500, just stick it on the bottom, half out of the grid. It'll be fine.
+Then go back and follow the path straight.
+You'll get to some stairs with a beast statue, talk to the collapsed navi.
+
+Grab Heatman and bring him to the same place, go to Lan's Homepage and take the new warp.
+After a cutscene you'll be in class 6-1, head home for more cutscenes.
+Back to Sky Town. Take the stairs right of the elevator then follow the path jack into a panel on the wall.
+To the top right of this comp there's a button, talk to it and buster down the viruses.
+Elevator up, skip cutscene, jack into each appliance. Talk to console to the top left in each.
+   In the forth comp there will be a windbox and starfish. I would advise against using HeatCross usually.
+      BeastOut unless you get something to one-shot the windbox (ie. M-Boomer).
+Continue into the room past the appliances. Skip cutscene.
+   (**)DO NOT FORGET: CHECK THE LOCKERS(**)
+
+Take the door to the far left (note the CopyBot). Run through the hall and hold down when outside again.
+After the cutscene, go back and activate the CopyBot.
+Go outside and run around along the top path to the overhanging path on the left side. 
+Take the elevator follow the path and run straight ahead once inside.
+
+Welcome to the rainbow macaroni comps. They suck, but at least we don't need anything here. Use the maps.
+
+ElementMan fight:
+   (#)Just buster him down. Take one of your good chips if you get it.
+
+Split after skipping the first cutscene after this fight.
+##End of Split##
+Moonstone:
+Go to Green Town first. Jack into the Truth comp, get the warp (bottom left). Take the warp and warp to Sky Area.
+Head off to undernet area. Talk to the red punk navi at the entrance. Then take the slider. Don't go forward immediately, but go one path over (down-left). THEN slip forward. Follow this path to the double sliders in the back and cross them, now talk to the red punk navi by the gate.
+Jack out -> Talk to man in back of Punishment Room. 
+
+Next, Seaside. Talk to the girl in front of the shop 3 times.	
+Back to Central Town and Undernet 1. In Undernet 2 take the left path on the top section.
+Now follow the path left until you come to a ramp. Go up it, and take the path up+right of the warp you see.
+You want the next warp. There's an invisible path in front of the Punk Navi's here with an weird looking thing. Grab it.
+Now jack out and leave your house. Talk to everyone (except the judge lady). Then go home to sleep.
+##End of Split##
+Blast/DivemanEX:
+Head to the Lev Station and go to ACDC town!
+Talk to everyone in town except Dex, Mayl and Yai. Then jack into the squirrel in ACDC park.
+Just slip forward. You can't leave without talking to Roll anyway.
+ACDC Area is pretty linear, follow the main path (right at intersection) and take the warp you see on an off shoot.
+Talk to the gate, the go back through the warp. Slip walk off the pink navi. 
+   Talk to the shogi piece (orange thing) in Dex's area. Back to the gate. Talk to it, then the prog.
+Jack out and back in. Don't just slip forward, go up first. Talk to Roll.
+Same movement now, slipwalk off the pink navi again. DO NOT LOSE SLIPWALK. 
+   (**)DO NOT JACK OUT. SLIPWALK BACK TO THE WARP POINT THAT LEAD TO THE PROG(**)
+
+Walk up the ramp and slip down the one to the left. You should know the way from here, go to Undernet 2.
+In Undernet2, after going around the upper part:
+   (**)DO NOT TAKE THE LEFT SLIDE PANEL PATH. TAKE RIGHT ONE.(**)
+   (**)DO NOT SLIDE AFTER TAKING THAT PATH, JUST WALK TO THE RAMP(**)
+
+   BlastmanEX fight:
+      (#)Just stand in the middle on the back row and buster charge.
+
+   DivemanEX fight. 
+      (#)If you draw badly, take bad chips and HeatCross. 
+      (#)If not, probably best to BeastOut from the get-go.
+
+Skip the cutscene after the fight, then split.	
+##End of Split##
+Colonel:
+Head home for cutscenes, then take the Bus to Seaside for another. Read your mail.
+Lev Bus to Sky Town and run to the same dead end you took the CopyBot to earlier.
+Now go grab HeatMan. On the net, use a sneakrun and run to Central 3. 
+Go to the left side, to the overhanging path. Talk to the Official navi, then jack out.
+
+Enter the door at the back of the Staff Room and talk to the Punishment Bot in front of the next door. Then run out to the lobby and talk to Mick.
+Back to that door where the robot was, there's a cutscene waiting inside.
+Grab Heatman again and go to the end of that same overhanging path in Central 3.
+
+Welcome to the Underground Areas. Talk to the collapsed navi, you probably know where this is going already.
+Once the area is cleared out, move on to the next area. Yup, there's another collapsed navi.
+Clear it out and run up the ramp in the middle. You may want to save before reaching the top.
+
+   GBeast fight: 
+      (#)This fight sucks. Boomer can double hit from bottom row.
+      (#)GBeast will slash attack two times, then do a thunder attack.
+
+   Colonel fight:
+      (#)If you stand on one of the 3 panels CrossDiv targets he'll ColArmy.
+      (#)If you flinch him from one of the 3 panels, he'll CrossDiv again.
+      (#)Keep flinching on the 3 panels to loop his AI.
+##End of Split##
+BossRush:
+Head over to ACDC Town and jack into the Squirrel. 
+The top segment of this comp has a new Prog, talk to him for a link and take it right now.
+Take your other link to Sky Area and go to where you fought BlastmanEX and DivemanEX.
+   You'll have to fight some Punk Navi's on the way, you probably want to save before the third one.
+Once you're at the top, go to the right side of platform and read the top post on the BBS.
+When you're sure you've read the right post, jack out.
+Off to Sky town. Remember where you fixed the elevator? Head down there.
+After the cutscene go trigger the next cutscene in Central Park.
+Go home and yet another cutscene will advance the day for you.
+
+You'll end up in 6-1 again. Talk to Mick in the top corner.
+On the way out, talk to Iris in the School Lobby.
+Talk to Tab in the Chip Shop.
+Jack in at home and take the link you made to ACDC Area.
+Run around the area and talk to Protoman, Roll (right at split, pink section), Gutsman (green), Glyde (yellow).
+Jack out and sleep.
+
+TalkToMom then meet your friends at Central Park. Go to the left corner of town and pass through the gate.
+Go around to the three buildings and talk to the desk in each (Right corner, Left corner, at the end).
+After entering the Pavilion Plaza again you get cutscened back to Class 6-1 with some beat up Punk Navi's.
+Go to the Principle Office (That's the room the Punishment Bot was guarding earlier).
+Behind the desk examine the bookshelf (one book stands out).
+Go through the passage that opened. It's linear from here.
+
+The BossRush Comps are styled like the other boss's comps in this order.
+   Aqaurium, Judge Tree, Weather, RoboControl. You know how they work, there's nothing we need so just clear them.
+   Aquarium is the only one without a boss fight at the end, and Circusman is in RoboControl.
+Once you've beat CircusmanEX head up the stairs and save in front of the door, that's the point of no return.
+Skip some cutscenes and slip along the linear comp path and you'll start the Gregar fight.
+##End of Split##
+Gregar:
+Gregar is one of the easiest final bosses in the series, but you do need to understand how to fight him.	
+
+Gregar has two hitboxes: one is in his head, and one is in his body right behind his head. If you hit both boxes simultaneously, you will deal double damage. This is the main idea.
+First turn HeatCross. Pick as many elemental chips as you can. (We want non-elemental chips for charging later.)
+
+Gregar will drop down two times, dropping rocks. One of the rocks is always going to drop where you're standing.
+Make sure you charge your flamethrower, and to stay in the middle row after his second drop! 
+Right before he drops down for the third time, stand in the middle or front column (still middle row), and unleash your flamethrower down the middle. (He needs to drop down on it for us to get both hitboxes simultaneously.)
+If you're lucky, he'll do a fire breath attack. You will be able to charge another flamethrower immediately. If he does a lightning attack, be a little sad but continue on.
+
+On your second turn, beast out and pick as many null element chips as you can. Same pattern, except this time we want to end on either the top or bottom row in the middle column. You can wait to see what kind of attack he does now. 
+If he does fire breath, tough luck. You're taking damage. Flame breath him in return. Make sure to hit both boxes.
+If he does his lightning attack, step up or down as needed to dodge it, then flame breath. Rinse repeat.  
+
+After 3 total breath attacks, he will do a machine gun attack on the column you're standing. Just step forward or back to dodge and flame breath his face some more. 
+
+After the machine gun attack, he'll do one more breath attack, then do a claw swipe/headbutt combo. DODGE THE CLAWS.
+The claws steal your chips, which you kinda need to charge flame breaths. The head isn't such a big deal. 
+
+With these tips, Gregar should go down fairly quickly. Just try to play it safe, dodge as many of his attacks as you can.
+##End of Split##
+Good job! 
+
+You finished your run. Pat yourself on the back
+##End of Split##
