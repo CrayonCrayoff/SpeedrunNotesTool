@@ -30,7 +30,15 @@ origiworkDir = os.getcwd()
 temporaryList = []
 splitsNotesList = []
 
-with open('TheNotes.txt', 'r') as file:
+with open('ReadMe.txt', 'r') as file:
+    textLines = file.readlines()
+    for line in textLines:
+        temporaryList.append(line)
+    splitText = "".join(temporaryList)
+    splitsNotesList.append(splitText)
+    temporaryList = []
+
+with open('TheNotes.txt', 'r', encoding="utf-8", errors="ignore") as file:
     textLines = file.readlines()
 
 for line in textLines:
@@ -221,35 +229,8 @@ def resize(e):
 
 
 #Waits for a keyboard input, checks for certain keys.
-    #This needs to be updated later, to allow the user to set their own hotkeys. 
+#This needs to be updated later, to allow the user to set their own hotkeys. 
 def waitkeyPress():
-    running = True
-    while running:
-        event = keyboard.read_event()
-
-        if event.event_type == keyboard.KEY_UP:
-            if event.name == '0' and event.is_keypad == True:
-                nextSplit()
-            elif event.name == '-' and event.is_keypad == True: 
-                undoSplit()
-            elif event.name == '+' and event.is_keypad == True:
-                skipSplit()
-            elif event.name == 'space':
-                nextMap()
-            elif event.name == 'backspace':
-                previousMap()
-            elif event.name == 'slash' and event.is_keypad == True:
-                resetAll()
-            elif event.name == 'delete':
-                modeSwap()
-            #Closes the window. Only triggers if the window is in focus, to prevent accidental closing.
-            elif event.name == 'q' or event.name == 'esc':
-                if root.focus_displayof():
-                    root.destroy()
-            else:
-                pass
-
-"""
     running = True
     while running:
         event = keyboard.read_event()
@@ -274,14 +255,12 @@ def waitkeyPress():
                     root.destroy()
             else:
                 pass
-"""                
-                
-                
+
+
+
 def main():
     running = True
 
-    
-    
     # start a seperate thread that waits for a global keyboard input
     t = threading.Thread(target=waitkeyPress, daemon=True)
     t.start()
