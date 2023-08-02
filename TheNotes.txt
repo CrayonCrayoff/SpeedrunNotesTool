@@ -1,30 +1,3 @@
-This is the starting screen of the SpeedrunNotesTool. It can show notes and maps. 
-
-Essentially, it keeps track of two lists: one for notes and one for maps. 
-
-For maps, it checks the folder called "maps". It takes all the files in this folder (please make sure there are only images in there), and then puts them in alphabetical order. So to get the maps to show up in the right order, the file names need to be in alphabetical order.
-
-For the text notes, it will check the text file called TheNotes.txt and read all the lines from it. It determines where the end of a split is by looking for lines that start with the exact phrase "##End of Split##" (it's also case-sensitive). You can edit the text file to add in your own notes. 
-
-The hotkeys it responds to are hard-coded in. There is currently no way to edit these, but I'm hoping to add that functionality sometime soon. The hotkeys for this build are as follows:
-
-Next Split	= F1
-Undo Split	= F3
-Skip Split	= F4
-Next Map	= F5
-Previous Map	= F6
-Reset 		= F2
-Swap Modes	= F8
-Close Program 	= Escape (To prevent accidental closing, this only works if the program is in focus.)
-
-All of these hotkeys (with the exception of closing the program) will work even if the program is running in the background. It doesn't need to be in focus. 
-
-You can quit the program by pressing the close button at the top right. 
-
-Finally, the tool can be resized to whatever size you like. It will adjust horizontal text wrapping (for notes) and image size (for maps) to fit the screen. Unfortunately, it won't save these dimensions (also something I will add eventually), so it will always start up with the same dimensions. 
-
-This page is part of TheNotes.txt as well. Please keep this part in when editing. To properly line up with the way LiveSplit functions, it's important to have one screen of text before the start of the actual notes. You might notice there's also one "split" at the end that just says "Good job!". That is there for the same reason.
-##End of Split##
 Blastman:
 
 *Keep track of how many chips you get!*
@@ -60,7 +33,7 @@ SeasideBBS:
 
 *You really only need to keep track of TrnArrows here. 3 is the max!*
 Run home and jack in. Buy 3 sneakruns at the sub-chip dealer. Activate one immediately. 
-(**)DO NOT FORGET: PICK UP KEYDATA IN CENTRALAREA2.(**)	
+(**)DO NOT FORGET: PICK UP KEYDATA IN CENTRALAREA2.(**)
 
 Talk to the Beast statues, then sleep.
 
@@ -88,7 +61,7 @@ Now get back on the net and talk to the Navi at the entrance to Seaside Area. Ma
 After talking to the BBS, skip cutscene and split.
 ##End of Split##
 Diveman:
-	
+
 Back to school, talk to Mick in the School Lobby. Then go to the Lev Station.
 In Seaside Town:
    If you don't have TrnArrow1, force encounters in the FishstickComp.
@@ -162,9 +135,9 @@ After too many cutscenes, stop by Tab's Chip Shop. That's the building left of t
  
    Lotto Codes!
    08789369 (ElemTrap), 88674125 (M-Boomer), 08749780 (HP+400)
-   19790420 (BustPack), 71757977 (AirSpin), 12110031 (HackJack)		
+   19790420 (BustPack), 71757977 (AirSpin), 12110031 (HackJack)
 
-Off to the net. Do a folder edit in Central 1.		
+Off to the net. Do a folder edit in Central 1.
  
    (*)Folder edit:
       Sort (select, 4th option). Remove 4 swords, reg crkshot. 
@@ -201,10 +174,10 @@ Next, go to the courthouse in Green Town. J/I "TRUTH".
  
    (*)Folder edit (EXPOFLDR FIRST):
       Take out Cannon A and *, all 3 Vulcan2 D, all 2 DublShot *. Replace with whatever. Exit out of ExpoFldr.
-      (*)Folder edit (FOLDER1):
-         Remove 8 chips (pref: MachGun, AreaGrab, L codes, B codes)
-         Reg copyDmg. Sort backpack by ID twice.
-         Add in DublShots, BlkBomb F, then the Vulcans and Cannons. 
+   (*)Folder edit (FOLDER1):
+      Remove 8 chips (pref: MachGun, AreaGrab, L codes, B codes)
+      Reg copyDmg. Sort backpack by ID twice.
+      Add in DublShots, BlkBomb F, then the Vulcans and Cannons. 
  
 Take the second warp, second warp again, the right stairs. Second branch, second branch again. Talk to the gate.
 Jack out, back in, then talk to blue dude again (MASH A, YOU WANT TO ACCEPT), then the green one next to him.
@@ -251,7 +224,7 @@ Go back to the line of movement panels and cross, you should see a blue navi to 
 
    (**)DO NOT JACK OUT AFTER THE CUTSCENE. SPLIT AND GO TO UNDERNET1!(**)
 ##End of Split##
-Elementman:	
+Elementman:
 Cross the first movement panel and slip forward, then down+left. That'll put you on the path you need to be following.
 Take the left turn and grab the BMD on the right segment of the comp. 
    Open the Navi Cust and add HP+500, just stick it on the bottom, half out of the grid. It'll be fine.
@@ -285,7 +258,7 @@ Go to Green Town first. Jack into the Truth comp, get the warp (bottom left). Ta
 Head off to undernet area. Talk to the red punk navi at the entrance. Then take the slider. Don't go forward immediately, but go one path over (down-left). THEN slip forward. Follow this path to the double sliders in the back and cross them, now talk to the red punk navi by the gate.
 Jack out -> Talk to man in back of Punishment Room. 
 
-Next, Seaside. Talk to the girl in front of the shop 3 times.	
+Next, Seaside. Talk to the girl in front of the shop 3 times.
 Back to Central Town and Undernet 1. In Undernet 2 take the left path on the top section.
 Now follow the path left until you come to a ramp. Go up it, and take the path up+right of the warp you see.
 You want the next warp. There's an invisible path in front of the Punk Navi's here with an weird looking thing. Grab it.
@@ -314,7 +287,7 @@ In Undernet2, after going around the upper part:
       (#)If you draw badly, take bad chips and HeatCross. 
       (#)If not, probably best to BeastOut from the get-go.
 
-Skip the cutscene after the fight, then split.	
+Skip the cutscene after the fight, then split.
 ##End of Split##
 Colonel:
 Head home for cutscenes, then take the Bus to Seaside for another. Read your mail.
@@ -371,7 +344,7 @@ Once you've beat CircusmanEX head up the stairs and save in front of the door, t
 Skip some cutscenes and slip along the linear comp path and you'll start the Gregar fight.
 ##End of Split##
 Gregar:
-Gregar is one of the easiest final bosses in the series, but you do need to understand how to fight him.	
+Gregar is one of the easiest final bosses in the series, but you do need to understand how to fight him.
 
 Gregar has two hitboxes: one is in his head, and one is in his body right behind his head. If you hit both boxes simultaneously, you will deal double damage. This is the main idea.
 First turn HeatCross. Pick as many elemental chips as you can. (We want non-elemental chips for charging later.)
@@ -391,8 +364,4 @@ After the machine gun attack, he'll do one more breath attack, then do a claw sw
 The claws steal your chips, which you kinda need to charge flame breaths. The head isn't such a big deal. 
 
 With these tips, Gregar should go down fairly quickly. Just try to play it safe, dodge as many of his attacks as you can.
-##End of Split##
-Good job! 
-
-You finished your run. Pat yourself on the back
 ##End of Split##
