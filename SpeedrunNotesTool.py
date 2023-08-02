@@ -160,9 +160,6 @@ def displayNotes():
     text.config(state=tk.DISABLED)
     text.pack(fill="both", expand="True")
 
-    print("xview is: ", text.xview())
-    print("yview is: ", text.yview())
-
 #Needlessly complicated way to display an image on the screen.
 def displayMaps():
     global mapsNameList
