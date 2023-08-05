@@ -1,4 +1,4 @@
-screenDimensions: 619x638+617+170
+screenDimensions: 646x665+617+170
 Next Split:
   event_type: up
   scan_code: 82
@@ -39,3 +39,4 @@ Quit Program:
   scan_code: 1
   name: esc
   is_keypad: false
+Text Size: 12

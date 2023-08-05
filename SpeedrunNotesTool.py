@@ -154,7 +154,16 @@ startingImage = origiworkDir + "\maps\\" + mapsNameList[0]
 
 
 
-
+#Define the slider behaviour in the settingsMenu.
+def textSizeChange(e):
+    global oldTextSize
+    oldTextSize = configFile["Text Size"]
+    global slider
+    configFile["Text Size"] = slider.get()
+    global previewText
+    #previewText.config(state=tk.NORMAL)
+    previewText.config(font=("Consolas",configFile["Text Size"]))
+    text.config(font=("Consolas",configFile["Text Size"]))
 
 def openSettingsMenu():
     #Set up settings window.
@@ -171,6 +180,7 @@ def openSettingsMenu():
     settingsMenu.columnconfigure(2, weight=1)
     settingsMenu.columnconfigure(3, weight=1)
 
+    settingsMenu.rowconfigure(10, weight=1)
     settingsMenu.focus_force()
     settingsMenu.grab_set()
     
@@ -184,18 +194,44 @@ def openSettingsMenu():
         hotkeyName = tk.Label(master=settingsMenu, bg="grey18", fg="white", text=name)
         hotkeyName.grid(column=0, row=index, padx=5, pady=5, sticky=tk.W)
         
-        textBox = tk.Label(master=settingsMenu, bg="white", fg="black", relief=tk.SUNKEN, justify=tk.LEFT, width=40)
+        textBox = tk.Label(master=settingsMenu, bg="white", fg="black", relief=tk.SUNKEN, justify=tk.LEFT, width=100)
+        currentKey = "Current: "
+        if configFile[name]["is_keypad"] == True:
+            currentKey = currentKey + "Numpad "
+        currentKey += str(configFile[name]["name"])
+        textBox.config(text=currentKey)
         textBox.grid(column=1, columnspan=2, row=index, padx=5, pady=5, sticky=tk.EW)
         
         setButton = tk.Button(master=settingsMenu, text="Set Hotkey", command=lambda i=index, name=name: hotkeyButton(i, name))
         setButton.grid(column=3, row=index, padx=5, pady=5, sticky=tk.W)
 
-    saveButton = tk.Button(master=settingsMenu, text="Save Settings", command=lambda: saveSettings())
-    saveButton.grid(column=1, row=10, padx=5, pady=5, sticky=tk.E)
-    cancelButton = tk.Button(master=settingsMenu, text="Cancel", command=lambda: closeSettingsMenu())
-    cancelButton.grid(column=2, row=10, padx=5, pady=5, sticky=tk.W)
 
+    
+    global slider
+    slider = tk.Scale(master=settingsMenu, from_=10, to=20, orient=tk.HORIZONTAL, command=textSizeChange)
+    slider.set(10)
+    slider.grid(column=1, row=9, columnspan =2)
+    
+    global previewText
+    previewText = tkscrolled.ScrolledText(master=settingsMenu,
+        font=("Consolas",10),
+        selectbackground="grey35",
+        bg="grey18",
+        fg="white",
+        wrap=tk.WORD,
+        width=screenWidth,
+        height=20,
+        relief=tk.FLAT,
+        cursor="arrow")
+    
+    previewText.vbar.config(width="0")
+    previewText.grid(column=0, row=10, columnspan=4)
 
+    previewText.insert(tk.END, "This is just preview text. Use the slider to adjust font size.")
+    previewText.config(state=tk.DISABLED)
+
+    cancelButton = tk.Button(master=settingsMenu, text="Close Settings Menu", command=lambda: closeSettingsMenu())
+    cancelButton.grid(column=1, columnspan=2, row=11, padx=5, pady=5, sticky=tk.W)
 
 
 
@@ -303,18 +339,11 @@ def waitkeyPress(name=None, listening=False, running=False, i=None):
 def hotkeyButton(i, name):
     textDisplay = settingsMenu.grid_slaves(row=i, column=1)
    
-    textDisplay[0].config(text="Now listening for keyboard inputs...")
+    textDisplay[0].config(text="Listening...")
     
     # start a seperate thread that waits for a global keyboard input
     t = threading.Thread(target=waitkeyPress, kwargs={"name": name, "listening": True, "i": i}, daemon=True)
     t.start()
-
-#Button to save the settings
-def saveSettings():
-    with open("config.yaml", "w") as f:
-        settings = configFile
-        settings = yaml.dump(settings, stream=f, default_flow_style=False)
-    settingsMenu.destroy()
 
 
 #Define button functionality in the Main Menu.
