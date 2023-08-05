@@ -1,6 +1,6 @@
 # SpeedrunNotesTool
 
-Latest build: https://github.com/CrayonCrayoff/SpeedrunNotesTool/releases/tag/SpeedrunNotesToolv0.0.2
+Latest build: [SpeedrunNotesTool.zip](https://github.com/CrayonCrayoff/SpeedrunNotesTool/releases/tag/SpeedrunNotesToolv1.0.0)
 
 A simple tool to show notes and maps during a speedrun.
 
