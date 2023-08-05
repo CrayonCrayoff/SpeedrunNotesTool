@@ -3,6 +3,7 @@
 import tkinter as tk
 import tkinter.scrolledtext as tkscrolled
 from tkinter import ttk
+from tkinter import Toplevel
 from PIL import Image, ImageTk, ImageOps
 
 #For listening to key presses, finding directories, and threading so the program doesn't crash on close.
@@ -15,81 +16,48 @@ import yaml
 
 
 
-#Set up window to display things in.
-with open("config.yaml", "r") as f:
-    config = yaml.load(f, Loader=yaml.FullLoader)
-    
-
-    root = tk.Tk()
-    root.minsize(width=120, height=120)
-    root.geometry(config["screenDimensions"])
-    root.title("SpeedrunScrollableNotesTool")
-    root.config(background="grey18")
-
-
-
-#Finds the current working directory, store it as original working directory for later use.
-origiworkDir = os.getcwd()
-
-
-
-#Generate list of notes, separated by split. End of split is indicated in text file by the string "#####", followed by a newline.
-#Final list for use is called splitsNotesList.
-    #This probably needs to be updated later to allow user input through the GUI.
-temporaryList = []
-splitsNotesList = []
-
-#Add the ReadMe file as the first "splits" notes.
-with open('ReadMe.txt', 'r') as file:
-    textLines = file.readlines()
-    for line in textLines:
-        temporaryList.append(line)
-    splitText = "".join(temporaryList)
-    splitsNotesList.append(splitText)
-    temporaryList = []
-
-#Add the actual notes.
-with open('TheNotes.txt', 'r', encoding="utf-8", errors="ignore") as file:
-    textLines = file.readlines()
-
-for line in textLines:
-    if re.search("^##End of Split##", line):
-        splitText = "".join(temporaryList)
-        splitsNotesList.append(splitText)
-        temporaryList = []
-    else:
-        temporaryList.append(line)
-    
-#Add one final "split" so everything lines up with LiveSplit functionality.
-goodJob = """Great job on finishing your run!\n\nPat yourself on the back, rehydrate with some water, stretch a little.\n
-            \nIf you want to do another run, just press the button for "Next Split" or for "Reset".\n
-            \nOf course you can also call it a day and close the program."""
-splitsNotesList.append(goodJob)
-
-
-#Looks in folder called maps and makes an alphabetized list of the names of all the files in it.
-mapsPath = "maps"
-dirmapsList = os.listdir(mapsPath)
-listMapNames = sorted(dirmapsList)
-
-#Generates a list called mapsList, containing all the file names.
-mapsNameList = []
-for name in listMapNames:
-    pathAndName = origiworkDir + "\maps\\" + name
-    mapsNameList.append(pathAndName)    
-
-#Starting values for list indeces and such
-currentSplit = 0
-currentMap = -1
-screenWidth = root.winfo_width()
-screenHeight = root.winfo_height()
+global settingsMenu
+global configFile
+global screenWidth
+global screenHeight
+global splitsNotesList
+global mapsNameList
 global mode
-mode = "Notes"
-
-startingImage = origiworkDir + "\maps\\" + mapsNameList[0]
-
+global currentSplit
+global currentMap
 global finalImage
 
+#Load in saved settings
+with open("config.yaml", "r") as f:
+    configFile = yaml.load(f, Loader=yaml.FullLoader)
+
+
+
+#Set up window to display things in.
+root = tk.Tk()
+root.minsize(width=120, height=120)
+root.geometry(configFile["screenDimensions"])
+root.title("Speedrun Notes Tool v1.0.0")
+root.config(background="grey18")
+
+
+root.columnconfigure(0, weight=1)
+root.columnconfigure(1, weight=1)
+root.rowconfigure(1, weight=1)
+
+#Set a variable with the screen width and height for later use.
+root.update()
+screenWidth = root.winfo_width()
+screenHeight = root.winfo_height()
+
+#Create a button in the 0th column.
+startButton = tk.Button(root, text="Start running", command=lambda: startRun())
+startButton.grid(column=0, row=0, padx=5, pady=5, sticky=tk.E)
+
+
+#Create a button in the 1st column.
+settingsButton = tk.Button(root, text="Settings", command=lambda: openSettingsMenu())
+settingsButton.grid(column=1, row=0, padx=5, pady=5, sticky=tk.W)
 
 
 #Create the label in the window to display images.
@@ -105,6 +73,7 @@ label = tk.Label(master=root,
     padx=10,
     pady=10)
 
+
 #Create the text widget to display text. Allows for scrolling if necessary.
 text = tkscrolled.ScrolledText(master=root,
     font=("Consolas",10),
@@ -112,36 +81,121 @@ text = tkscrolled.ScrolledText(master=root,
     bg="grey18",
     fg="white",
     wrap=tk.WORD,
-    height = screenHeight,
-    width = screenWidth,
-    relief=tk.FLAT)
+    width=screenWidth,
+    height=screenHeight,
+    relief=tk.FLAT,
+    cursor="arrow")
 text.vbar.config(width="0")
-text.pack(fill="both", expand="True")
+text.grid(column=0, row=1, sticky=tk.NSEW, columnspan=2)
 
-text.insert(tk.END, splitsNotesList[0])
+
+#Add the ReadMe file as the opening text.
+temporaryList = []
+
+with open('ReadMe.txt', 'r') as file:
+    textLines = file.readlines()
+    for line in textLines:
+        temporaryList.append(line)
+    openingText = "".join(temporaryList)
+    temporaryList = []
+
+
+text.insert(tk.END, openingText)
 text.config(state=tk.DISABLED)
 
 
 
+#Add the actual notes.
+splitsNotesList = []
 
-#Call display function to resize textwrap size or image size, depending on current mode.
-def resize(e):
-    #Store the screen's dimensions and position in the YAML config file.
-    latestDimensions = root.winfo_geometry() 
-    with open("config.yaml", "r") as f:
-        config = yaml.load(f, Loader=yaml.FullLoader)
-    
-    config["screenDimensions"] = latestDimensions
-    with open("config.yaml", "w") as f:
-        config = yaml.dump(config, stream=f, default_flow_style=False, sort_keys=False)
-    with open("config.yaml") as f:
-        config = yaml.load(f, Loader=yaml.FullLoader)    
-    
-    global mode
-    if mode == "Maps":
-        displayMaps()
+gettingReadyText = "This is a waiting screen for the start of your run. The program is listening to your keyboard inputs. Press the \"Next Split\" button to start the run."
+
+splitsNotesList.append(gettingReadyText)
+with open('TheNotes.txt', 'r', encoding="utf-8", errors="ignore") as file:
+    textLines = file.readlines()
+
+for line in textLines:
+    if re.search("^##End of Split##", line):
+        splitText = "".join(temporaryList)
+        splitsNotesList.append(splitText)
+        temporaryList = []
     else:
-        pass
+        temporaryList.append(line)
+
+#Add one final "split" so everything lines up with LiveSplit functionality.
+goodJob = """Great job on finishing your run!\n\nPat yourself on the back, rehydrate with some water, stretch a little.\n
+            \nIf you want to do another run, just press the button for "Next Split" or for "Reset".\n
+            \nOf course you can also call it a day and close the program."""
+splitsNotesList.append(goodJob)
+
+
+
+
+#Looks in folder called maps and makes an alphabetized list of the names of all the files in it.
+origiworkDir = os.getcwd()
+mapsPath = "maps"
+dirmapsList = os.listdir(mapsPath)
+listMapNames = sorted(dirmapsList)
+
+#Generates a list called mapsList, containing all the file names.
+mapsNameList = []
+for name in listMapNames:
+    pathAndName = origiworkDir + "\maps\\" + name
+    mapsNameList.append(pathAndName)    
+
+#Starting values for list indeces and such
+currentSplit = 0
+currentMap = -1
+
+mode = "Notes"
+
+startingImage = origiworkDir + "\maps\\" + mapsNameList[0]
+
+
+
+
+
+
+def openSettingsMenu():
+    #Set up settings window.
+    global settingsMenu
+    settingsMenu = Toplevel()
+    settingsMenu.minsize(width=120, height=120)
+    settingsMenu.geometry("500x600+600+100")
+    settingsMenu.title("SpeedrunScrollableNotesTool")
+    settingsMenu.config(background="grey18")
+    settingsMenu.resizable(0,0)
+
+    settingsMenu.columnconfigure(0, weight=1)
+    settingsMenu.columnconfigure(1, weight=1)
+    settingsMenu.columnconfigure(2, weight=1)
+    settingsMenu.columnconfigure(3, weight=1)
+
+    settingsMenu.focus_force()
+    settingsMenu.grab_set()
+    
+    print("Opened settings menu")
+    
+    #Set up the Settings Menu widgets.
+    hotkeyNames = ["Next Split", "Undo Split", "Skip Split", "Next Map", "Previous Map", "Swap to Text/Maps", "Reset", "Quit Program"]
+    
+    #Loop through the hoykeyNames, creating a Label with the name, accompanied by a textbox and a button.
+    for index, name in enumerate(hotkeyNames):
+        hotkeyName = tk.Label(master=settingsMenu, bg="grey18", fg="white", text=name)
+        hotkeyName.grid(column=0, row=index, padx=5, pady=5, sticky=tk.W)
+        
+        textBox = tk.Label(master=settingsMenu, bg="white", fg="black", relief=tk.SUNKEN, justify=tk.LEFT, width=40)
+        textBox.grid(column=1, columnspan=2, row=index, padx=5, pady=5, sticky=tk.EW)
+        
+        setButton = tk.Button(master=settingsMenu, text="Set Hotkey", command=lambda i=index, name=name: hotkeyButton(i, name))
+        setButton.grid(column=3, row=index, padx=5, pady=5, sticky=tk.W)
+
+    saveButton = tk.Button(master=settingsMenu, text="Save Settings", command=lambda: saveSettings())
+    saveButton.grid(column=1, row=10, padx=5, pady=5, sticky=tk.E)
+    cancelButton = tk.Button(master=settingsMenu, text="Cancel", command=lambda: closeSettingsMenu())
+    cancelButton.grid(column=2, row=10, padx=5, pady=5, sticky=tk.W)
+
+
 
 
 
@@ -149,9 +203,6 @@ def resize(e):
 def displayNotes():
     #Resizes the text widget to fit the screen.
     global mode
-    global splitsNotesList
-    global currentSplit
-    
     mode = "Notes" 
     label.pack_forget()
     text.config(state=tk.NORMAL)
@@ -162,13 +213,7 @@ def displayNotes():
 
 #Needlessly complicated way to display an image on the screen.
 def displayMaps():
-    global mapsNameList
-    global currentMap
-    global finalImage
-    global screenWidth
-    global screenHeight
-    global mode
-
+    global mode 
     mode = "Maps"
 
     #Open image.
@@ -205,34 +250,94 @@ def displayMaps():
 
 
 
-#Waits for a keyboard input, checks for certain keys.
-    #This needs to be updated later, to allow the user to set their own hotkeys. 
-def waitkeyPress():
-    running = True
-    while running:
+
+#Function that gets called when either the settings window or the main window listens to the keyboard.
+def waitkeyPress(name=None, listening=False, running=False, i=None):
+    while listening:
         event = keyboard.read_event()
 
         if event.event_type == keyboard.KEY_UP:
-            if event.name == '0' and event.is_keypad == True:
-                nextSplit()
-            elif event.name == '-' and event.is_keypad == True: 
-                undoSplit()
-            elif event.name == '+' and event.is_keypad == True:
-                skipSplit()
-            elif event.name == 'space':
-                nextMap()
-            elif event.name == 'backspace':
-                previousMap()
-            elif event.name == '/' and event.is_keypad == True:
-                resetAll()
-            elif event.name == 'delete':
-                modeSwap()
-            #Closes the window. Only triggers if the window is in focus, to prevent accidental closing.
-            elif event.name == 'q' or event.name == 'esc':
-                if root.focus_displayof():
-                    root.destroy()
-            else:
-                pass
+            attributeList = {"event_type": event.event_type, "scan_code": event.scan_code, "name": event.name, "is_keypad": event.is_keypad}
+            configFile[name] = attributeList
+            
+            textDisplay = settingsMenu.grid_slaves(row=i, column=1)
+            recordedKey = "Recorded: "
+            if attributeList["is_keypad"] == True:
+                recordedKey = recordedKey + "Numpad "
+            
+            recordedKey += str(attributeList["name"])
+            
+            textDisplay[0].config(text=recordedKey)
+            
+            listening = False
+    while running:
+        event = keyboard.read_event()
+        attributeList = {"event_type": event.event_type, "scan_code": event.scan_code, "name": event.name, "is_keypad": event.is_keypad}
+        
+        if event.event_type == keyboard.KEY_UP:
+            with open("config.yaml", "r") as f:
+                keysToCheck = yaml.safe_load(f)
+                if attributeList == keysToCheck["Next Split"]:
+                    nextSplit()
+                elif attributeList == keysToCheck["Undo Split"]:
+                    undoSplit()
+                elif attributeList == keysToCheck["Skip Split"]:
+                    skipSplit()
+                elif attributeList == keysToCheck["Next Map"]:
+                    nextMap()
+                elif attributeList == keysToCheck["Previous Map"]:
+                    previousMap()
+                elif attributeList == keysToCheck["Swap to Text/Maps"]:
+                    modeSwap()
+                elif attributeList == keysToCheck["Reset"]:
+                    resetAll()
+                elif attributeList == keysToCheck["Quit Program"]:
+                    closeWindow("filler")
+                else:
+                    print("Unrecognized hotkey")
+
+        
+        
+#Define button functionalities in Settings Menu.
+#Button to set the corresponding hotkey
+def hotkeyButton(i, name):
+    textDisplay = settingsMenu.grid_slaves(row=i, column=1)
+   
+    textDisplay[0].config(text="Now listening for keyboard inputs...")
+    
+    # start a seperate thread that waits for a global keyboard input
+    t = threading.Thread(target=waitkeyPress, kwargs={"name": name, "listening": True, "i": i}, daemon=True)
+    t.start()
+
+#Button to save the settings
+def saveSettings():
+    with open("config.yaml", "w") as f:
+        settings = configFile
+        settings = yaml.dump(settings, stream=f, default_flow_style=False)
+    settingsMenu.destroy()
+
+
+#Define button functionality in the Main Menu.
+def startRun():
+    print("Started run")
+    startButton.destroy()
+    settingsButton.destroy()
+    t = threading.Thread(target=waitkeyPress, kwargs={"running": True}, daemon=True)
+    t.start()
+
+    displayNotes()
+
+
+#Save the window dimensions whenever the window is resized.
+def resizedWindow(e):
+    #Store the screen's dimensions and position in the YAML config file.
+    latestDimensions = root.winfo_geometry() 
+
+    configFile["screenDimensions"] = latestDimensions
+    with open("config.yaml", "w") as f:
+        settings = configFile
+        settings = yaml.dump(settings, stream=f, default_flow_style=False, sort_keys=False)
+
 
 
 
@@ -281,17 +386,23 @@ def modeSwap():
         
     else:
         pass
-        
 
+
+
+
+def closeWindow(e):
+    if root.focus_displayof():
+        root.destroy()
+    if settingsMenu.focus_displayof():
+        settingsMenu.destroy()
+
+def closeSettingsMenu():
+    settingsMenu.destroy()
 
 def main():
-    # start a seperate thread that waits for a global keyboard input
-    t = threading.Thread(target=waitkeyPress, daemon=True)
-    t.start()
-
-    root.bind("<Configure>", resize)
+    text.bind("<Button-1>", lambda event: "break")
+    root.bind("<Configure>", resizedWindow)
     root.mainloop()
 
-    
 if __name__ == "__main__":
     main()

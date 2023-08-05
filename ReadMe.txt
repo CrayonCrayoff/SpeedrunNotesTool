@@ -6,19 +6,13 @@ For maps, it checks the folder called "maps". It takes all the files in this fol
 
 For the text notes, it will check the text file called TheNotes.txt and read all the lines from it. It determines where the end of a split is by looking for lines that start with the exact phrase "##End of Split##" (it's also case-sensitive). You can edit the text file to add in your own notes. 
 
-The hotkeys it responds to are hard-coded in. There is currently no way to edit these, but I'm hoping to add that functionality sometime soon. The hotkeys for this build are as follows:
+You can press the "Settings" button to open a new window to configure your own hotkeys for navigating through notes and maps. The program saves these for next time, so you only have to do this once. 
 
-Next Split		= F1
-Undo Split		= F3
-Skip Split		= F4
-Next Map		= F5
-Previous Map		= F6
-Reset		= F2
-Swap Modes		= F8
-Close Program 		= Escape
+The program will only listen to your keyboard inputs once you've pressed the "Start Run" button. This button will bring you to a "waiting screen". Once you press the hotkey for "Next Split", it will show your notes.
 
-All of these hotkeys will work even if the program is running in the background. It doesn't need to be in focus. To prevent accidental closing of the program, the "Close Program" hotkey will only work if the program is in focus. 
+While running, the program will respond to hotkeys even if it is running in the background. It doesn't need to be in focus. To prevent accidental closing of the program, the "Close Program" hotkey will only work if the program is in focus. 
 
-You can quit the program by pressing the close button at the top right. 
+You can also quit the program by pressing the close button at the top right. 
 
-Finally, the tool can be resized to whatever size you like. It will adjust horizontal text wrapping (for notes) and image size (for maps) to fit the screen. Unfortunately, it won't save these dimensions (also something I will add eventually), so it will always start up with the same dimensions. 
+Finally, the tool can be resized to whatever size you like. It will adjust horizontal text wrapping (for notes) and image size (for maps) to fit the screen.
+It will save these dimensions as well as its position on the screen, so it'll be right where you left it last time the next time you open it up.

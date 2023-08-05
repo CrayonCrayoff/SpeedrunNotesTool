@@ -1,0 +1,41 @@
+screenDimensions: 619x638+617+170
+Next Split:
+  event_type: up
+  scan_code: 82
+  name: '0'
+  is_keypad: true
+Undo Split:
+  event_type: up
+  scan_code: 74
+  name: '-'
+  is_keypad: true
+Skip Split:
+  event_type: up
+  scan_code: 78
+  name: +
+  is_keypad: true
+Next Map:
+  event_type: up
+  scan_code: 57
+  name: space
+  is_keypad: false
+Previous Map:
+  event_type: up
+  scan_code: 14
+  name: backspace
+  is_keypad: false
+Swap to Text/Maps:
+  event_type: up
+  scan_code: 83
+  name: delete
+  is_keypad: false
+Reset:
+  event_type: up
+  scan_code: 53
+  name: /
+  is_keypad: true
+Quit Program:
+  event_type: up
+  scan_code: 1
+  name: esc
+  is_keypad: false
