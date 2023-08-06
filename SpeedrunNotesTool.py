@@ -62,7 +62,7 @@ settingsButton.grid(column=1, row=0, padx=5, pady=5, sticky=tk.W)
 
 #Create the label in the window to display images.
 label = tk.Label(master=root,
-    font=("Consolas",10),
+    font=("Consolas",configFile["Text Size"]),
     image="",
     justify="left",
     anchor="nw",
@@ -76,7 +76,7 @@ label = tk.Label(master=root,
 
 #Create the text widget to display text. Allows for scrolling if necessary.
 text = tkscrolled.ScrolledText(master=root,
-    font=("Consolas",10),
+    font=("Consolas",configFile["Text Size"]),
     selectbackground="grey35",
     bg="grey18",
     fg="white",
@@ -208,13 +208,13 @@ def openSettingsMenu():
 
     
     global slider
-    slider = tk.Scale(master=settingsMenu, from_=10, to=20, orient=tk.HORIZONTAL, command=textSizeChange)
-    slider.set(10)
+    slider = tk.Scale(master=settingsMenu, from_=10, to=20, length=300, orient=tk.HORIZONTAL, command=textSizeChange)
+    slider.set(configFile["Text Size"])
     slider.grid(column=1, row=9, columnspan =2)
     
     global previewText
     previewText = tkscrolled.ScrolledText(master=settingsMenu,
-        font=("Consolas",10),
+        font=("Consolas",configFile["Text Size"]),
         selectbackground="grey35",
         bg="grey18",
         fg="white",
@@ -230,7 +230,7 @@ def openSettingsMenu():
     previewText.insert(tk.END, "This is just preview text. Use the slider to adjust font size.")
     previewText.config(state=tk.DISABLED)
 
-    cancelButton = tk.Button(master=settingsMenu, text="Close Settings Menu", command=lambda: closeSettingsMenu())
+    cancelButton = tk.Button(master=settingsMenu, text="Close Settings Menu", command=lambda: closeWindow())
     cancelButton.grid(column=1, columnspan=2, row=11, padx=5, pady=5, sticky=tk.W)
 
 
@@ -328,10 +328,18 @@ def waitkeyPress(name=None, listening=False, running=False, i=None):
                 elif attributeList == keysToCheck["Reset"]:
                     resetAll()
                 elif attributeList == keysToCheck["Quit Program"]:
-                    closeWindow("filler")
+                    closeWindow()
                 else:
                     print("Unrecognized hotkey")
-
+    while not running and not listening:
+        event = keyboard.read_event()
+        attributeList = {"event_type": event.event_type, "scan_code": event.scan_code, "name": event.name, "is_keypad": event.is_keypad}
+        
+        if event.event_type == keyboard.KEY_UP:
+            with open("config.yaml", "r") as f:
+                keysToCheck = yaml.safe_load(f)
+                if attributeList == keysToCheck["Quit Program"]:
+                    closeWindow()
         
         
 #Define button functionalities in Settings Menu.
@@ -419,16 +427,24 @@ def modeSwap():
 
 
 
-def closeWindow(e):
-    if root.focus_displayof():
-        root.destroy()
-    if settingsMenu.focus_displayof():
-        settingsMenu.destroy()
+def closeWindow():
+    try: 
+        if settingsMenu.focus_displayof():
+            settingsMenu.destroy()
+        else: 
+            root.focus_displayof()
+            root.destroy()
+    except:
+        if root.focus_displayof():
+            root.destroy()
 
 def closeSettingsMenu():
     settingsMenu.destroy()
 
 def main():
+    t = threading.Thread(target=waitkeyPress, daemon=True)
+    t.start()
+    
     text.bind("<Button-1>", lambda event: "break")
     root.bind("<Configure>", resizedWindow)
     root.mainloop()
